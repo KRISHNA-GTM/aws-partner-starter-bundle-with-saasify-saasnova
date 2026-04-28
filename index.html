@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>AWS Partner Starter Bundle | SaaSNova x SaaSify</title>
 
-<!-- Google tag (gtag.js) - Replace 'G-YOUR_MEASUREMENT_ID' with your actual GA4 ID -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-185EJ40PT4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -118,7 +118,7 @@ body {
 section { padding: 110px 6%; }
 .wrap { max-width: 1140px; margin: 0 auto; }
 .center { text-align: center; }
-.text-left { text-align: left !important; } /* Guarantees grids and timeline text stays left-aligned */
+.text-left { text-align: left !important; }
 
 /* SECTION LABELS */
 .eyebrow {
@@ -201,7 +201,7 @@ section { padding: 110px 6%; }
 .card-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; color: var(--text); }
 .card-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
 
-/* HIGH-IMPACT TIMELINE (Calculated variables guarantee bulletproof alignment) */
+/* HIGH-IMPACT TIMELINE */
 .dark-section { background: var(--dark-bg); color: var(--white); }
 .timeline-wrap { 
   --node-size: 54px;
@@ -212,7 +212,6 @@ section { padding: 110px 6%; }
 }
 .timeline-path {
   position: absolute; 
-  /* Mathematically guaranteed center regardless of browser scaling */
   left: calc(var(--tl-pad) + (var(--node-size) / 2) - (var(--line-w) / 2)); 
   top: 30px; bottom: 30px;
   width: var(--line-w); background: var(--dark-border); border-radius: 3px;
@@ -294,17 +293,30 @@ section { padding: 110px 6%; }
 
 /* FOOTER */
 footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid var(--border); text-align: left; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; max-width: 1140px; margin: 0 auto; margin-bottom: 60px; }
-.footer-logo { height: 32px; margin-bottom: 20px; }
-.footer-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; max-width: 400px; }
-.footer-links h4 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px; color: var(--text); }
-.footer-links a { display: block; font-size: 0.95rem; color: var(--muted); text-decoration: none; margin-bottom: 12px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 64px; max-width: 1140px; margin: 0 auto; }
+.footer-logo { height: 40px; margin-bottom: 16px; display: block; transition: opacity 0.2s; }
+.footer-logo:hover { opacity: 0.8; }
+.footer-desc { font-size: 1.05rem; color: #1a1a1a; font-weight: 500; line-height: 1.5; margin-bottom: 20px; }
+.footer-contact { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; font-weight: 500; transition: color 0.2s; }
+.footer-contact:hover { color: var(--blue); }
+
+.footer-links-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px; color: var(--text); }
+.footer-links a { display: block; font-size: 0.95rem; color: var(--muted); text-decoration: none; margin-bottom: 12px; transition: color 0.2s; }
 .footer-links a:hover { color: var(--blue); }
-.footer-bottom { border-top: 1px solid var(--border); padding-top: 32px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+.footer-bottom { 
+  margin-top: 64px; border-top: 1px solid var(--border); padding-top: 32px; 
+  display: flex; flex-direction: column; align-items: center; gap: 16px; 
+}
+.footer-legal-links { display: flex; gap: 24px; }
+.footer-legal-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+.footer-legal-links a:hover { color: var(--blue); }
+.footer-copy { color: var(--muted); font-size: 0.85rem; }
 
 /* RESPONSIVE (Tablets) */
 @media (max-width: 900px) {
   .grid-3, .synergy-grid, .del-grid, .icp-wrap, .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid { gap: 48px; }
   .timeline-wrap { --node-size: 40px; --tl-pad: 20px; }
   .tl-item { gap: 24px; }
   .tl-node { font-size: 1rem; }
@@ -319,25 +331,18 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
 /* RESPONSIVE (Mobile Phones) */
 @media (max-width: 640px) {
   section { padding: 100px 5% 70px; } 
-  
-  /* Mobile Nav Centering Fixes */
   .nav { justify-content: center; padding: 0 5%; }
   .nav.scrolled { 
     width: 92%; padding: 12px 16px; border-radius: 40px; 
     min-height: 56px; justify-content: center; top: 16px;
   }
-  
-  /* Ensure logos are strictly centered and never vanish */
   .nav-logo-wrap { gap: 16px; justify-content: center; width: 100%; }
   .nav-logo img { height: 26px !important; width: auto !important; }
   .nav-logo.saasify-logo img { height: 20px !important; }
-  
   .nav.scrolled .nav-logo img { height: 24px !important; }
   .nav.scrolled .nav-logo.saasify-logo img { height: 18px !important; }
-  
   .nav-divider { display: none; }
   .nav-ctas { display: none !important; } 
-  
   .hero-actions { flex-direction: column; width: 100%; }
   .hero-actions .btn { width: 100%; }
   .section-title { font-size: clamp(2rem, 8vw, 2.5rem); }
@@ -345,7 +350,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
 
 /* ULTRA-SMALL MOBILE */
 @media (max-width: 480px) {
-  .hero { padding-top: 140px; } /* Ensures badge is fully visible */
+  .hero { padding-top: 140px; } 
   .timeline-wrap { --node-size: 32px; --tl-pad: 12px; }
   .tl-item { gap: 16px; }
   .tl-node { font-size: 0.9rem; }
@@ -611,32 +616,46 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
 <footer>
   <div class="wrap">
     <div class="footer-grid text-left">
-      <!-- Brand Col -->
+      <!-- SaaSNova Col -->
       <div>
-        <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
-          <img src="saasnova-logo.png" alt="SaaSNova" class="footer-logo" onerror="this.src='https://via.placeholder.com/100x30?text=SaaSNova'">
-          <img src="saasify-logo.png" alt="SaaSify" class="footer-logo" onerror="this.src='https://via.placeholder.com/100x30?text=SaaSify'">
+        <a href="https://www.saasnova.ai" target="_blank" class="footer-logo">
+          <img src="saasnova-logo.png" alt="SaaSNova" height="40" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSNova'">
+        </a>
+        <p class="footer-desc" style="margin-top: 16px;">Strategic GTM leadership and pipeline acceleration for cloud-native ISVs</p>
+        <div style="margin-top: 24px; display: flex; align-items: center; gap: 10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:operations@saasnova.ai" class="footer-contact">operations@saasnova.ai</a>
         </div>
-        <p class="footer-desc">Architecting scalable cloud commerce and unified go-to-market frameworks for high-growth ISVs. Immediate deployment engineered to secure marketplace advantage.</p>
       </div>
 
-      <!-- Links 1 -->
-      <div class="footer-links">
-        <h4>Contact</h4>
-        <a href="mailto:operations@saasnova.ai">operations@saasnova.ai</a>
-        <a href="mailto:marketing@saasnova.ai">marketing@saasnova.ai</a>
+      <!-- SaaSify Col -->
+      <div>
+        <a href="https://saasify.ai" target="_blank" class="footer-logo">
+          <img src="saasify-logo.png" alt="SaaSify" height="40" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSify'">
+        </a>
+        <p class="footer-desc" style="margin-top: 16px;">CRM integration and co-sell automation for multi-cloud marketplaces</p>
+        <div style="margin-top: 24px; display: flex; align-items: center; gap: 10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:sales@saasify.ai" class="footer-contact">sales@saasify.ai</a>
+        </div>
       </div>
 
-      <!-- Links 2 -->
+      <!-- Quick Links Col -->
       <div class="footer-links">
-        <h4>Quick Links</h4>
-        <a href="https://saasnova.ai" target="_blank">SaaSNova Homepage</a>
-        <a href="https://saasify.ai" target="_blank">SaaSify Homepage</a>
-        <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank">Book a Strategy Session</a>
+        <h4 class="footer-links-title">Quick Links</h4>
+        <a href="https://www.saasnova.ai" target="_blank">SaaSNova</a>
+        <a href="https://saasify.ai" target="_blank">SaaSify</a>
       </div>
     </div>
+    
     <div class="footer-bottom">
-      &copy; 2026 SaaSNova &times; SaaSify. All rights reserved.
+      <div class="footer-legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 SaaSNova &times; SaaSify. All rights reserved.
+      </div>
     </div>
   </div>
 </footer>
@@ -663,7 +682,6 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          // Calculate progress height based on how many are active
           const activeCount = document.querySelectorAll('.tl-item.active').length;
           const percentage = ((activeCount - 1) / (timelineItems.length - 1)) * 100;
           progressBar.style.height = `${percentage}%`;
