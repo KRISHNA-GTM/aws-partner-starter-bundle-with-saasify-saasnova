@@ -3,1059 +3,678 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AWS Partner Starter Bundle — SaaSNova × SaaSify</title>
+<title>AWS Partner Starter Bundle | SaaSNova x SaaSify</title>
+
+<!-- Google tag (gtag.js) - Replace 'G-YOUR_MEASUREMENT_ID' with your actual GA4 ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-185EJ40PT4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // Configure for your domain: saasnova.ai
+  gtag('config', 'G-185EJ40PT4'); 
+</script>
+
+<!-- Exact Favicons Requested -->
+<link rel="icon" type="image/png" sizes="32x32" href="logo-favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="logo-favicon-16x16.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
-
-  :root {
-    --blue: #008BF8;
-    --pink: #FA0F9C;
-    --orange: #F19953;
-    
-    /* High-Contrast Light Theme */
-    --text-main: #0F172A; /* Deep navy/slate for crystal clear readability */
-    --muted: #334155; /* Dark gray for secondary text, very visible */
-    
-    --bg-white: #FFFFFF;
-    --bg-alt: #F8FAFC; /* Subtle light gray/blue for section variation */
-    --bg-dark: #0B1220; /* For footer */
-    
-    --border: #E2E8F0;
-    --border-glow: rgba(0,139,248,0.15);
-    
-    --grad: linear-gradient(135deg, var(--blue), var(--pink));
-    --font: 'DM Sans', -apple-system, sans-serif;
-    --mono: 'DM Mono', monospace;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  body {
-    background: var(--bg-white);
-    color: var(--text-main);
-    font-family: var(--font);
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── STICKY NAV ── */
-  .nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5%;
-    height: 80px;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    transition: background 0.3s;
-  }
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .nav-sep { color: #94A3B8; font-size: 1.2rem; font-weight: 300; }
-  .nav-cta {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-family: var(--font);
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s;
-    letter-spacing: 0.01em;
-    border: none;
-  }
-  .btn-ghost {
-    background: transparent;
-    border: 1px solid #CBD5E1;
-    color: var(--text-main);
-  }
-  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); background: rgba(0,139,248,0.05); }
-  .btn-primary {
-    background: var(--grad);
-    color: #FFFFFF;
-    box-shadow: 0 4px 14px rgba(250,15,156,0.25);
-  }
-  .btn-primary:hover { box-shadow: 0 6px 20px rgba(250,15,156,0.4); transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent;
-    border: 1px solid rgba(0,139,248,0.4);
-    color: var(--blue);
-  }
-  .btn-outline:hover { background: rgba(0,139,248,0.08); border-color: var(--blue); }
-
-  /* ── SECTION VARIATION UTILS ── */
-  .bg-white { background: var(--bg-white); }
-  .bg-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  section { padding: 100px 5%; }
-  .container { max-width: 1140px; margin: 0 auto; }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 140px 5% 80px;
-    position: relative;
-    overflow: hidden;
-    background: var(--bg-white);
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    width: 700px; height: 700px;
-    top: -200px; left: -200px;
-    background: radial-gradient(circle, rgba(0,139,248,0.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 16px;
-    border-radius: 100px;
-    border: 1px solid var(--border-glow);
-    background: rgba(0,139,248,0.04);
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--blue);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .hero-headline {
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    max-width: 900px;
-    color: var(--text-main);
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-  .hero-headline .grad-text {
-    background: var(--grad);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-sub {
-    margin-top: 24px;
-    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-    color: var(--muted);
-    max-width: 680px;
-    font-weight: 400;
-    line-height: 1.6;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    margin-top: 48px;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-
-  /* ── SECTION TYPOGRAPHY ── */
-  .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 16px;
-  }
-  .section-label::before {
-    content: '';
-    width: 24px; height: 2px;
-    background: var(--blue);
-    border-radius: 2px;
-  }
-  .section-title {
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.15;
-    color: var(--text-main);
-    max-width: 640px;
-  }
-  .section-sub {
-    margin-top: 16px;
-    font-size: 1.05rem;
-    color: var(--muted);
-    max-width: 580px;
-    line-height: 1.65;
-  }
-
-  /* ── PROBLEM ── */
-  .problem-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-    margin-top: 64px;
-  }
-  .problem-list { display: flex; flex-direction: column; gap: 20px; }
-  .problem-item {
-    display: flex;
-    gap: 16px;
-    padding: 24px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: var(--bg-white);
-    align-items: flex-start;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-  }
-  .problem-num {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--pink);
-    padding-top: 3px;
-    flex-shrink: 0;
-  }
-  .problem-text strong {
-    display: block;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: var(--text-main);
-  }
-  .problem-text span { font-size: 0.9rem; color: var(--muted); }
-
-  .shift-card {
-    background: #FFFFFF;
-    border: 1px solid #E2E8F0;
-    border-radius: 20px;
-    padding: 48px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.04);
-  }
-  .shift-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: var(--grad);
-  }
-  .shift-card .shift-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    margin-bottom: 24px;
-  }
-  .shift-points { display: flex; flex-direction: column; gap: 16px; }
-  .shift-point {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 0.95rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-  .shift-check {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue), var(--pink));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    color: #FFFFFF;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .shift-divider {
-    width: 100%; height: 1px;
-    background: var(--border);
-    margin: 24px 0;
-  }
-  .shift-stat {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .stat { flex: 1; min-width: 100px; }
-  .stat-num {
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    background: var(--grad);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .stat-label { font-size: 0.8rem; font-weight: 500; color: var(--muted); margin-top: 4px; }
-
-  /* ── BUNDLE MODULES ── */
-  .modules-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 24px;
-    margin-bottom: 56px;
-  }
-  .modules-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .module-card {
-    background: var(--bg-white);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-  }
-  .module-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-  }
-  .mc-blue::after { background: var(--blue); }
-  .mc-pink::after { background: var(--pink); }
-  .mc-orange::after { background: var(--orange); }
-  .mc-violet::after { background: #C96BF5; }
-
-  .module-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-  .module-icon {
-    width: 48px; height: 48px;
-    border-radius: 10px;
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .module-week {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .week-blue { color: var(--blue); }
-  .week-pink { color: var(--pink); }
-  .week-orange { color: var(--orange); }
-  .week-violet { color: #C96BF5; }
-
-  .module-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; color: var(--text-main); }
-  .module-outcome { font-size: 0.95rem; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+:root {
+  --blue: #008BF8;
+  --pink: #FA0F9C;
+  --orange: #F19953;
+  --purple: #8146FF;
+  --white: #FFFFFF;
+  --text: #0A0F1E;
+  --muted: #4A5568;
+  --light: #F8FAFC;
+  --border: #E2E8F0;
+  --font: 'Inter', -apple-system, sans-serif;
   
-  .module-bullets { display: flex; flex-direction: column; gap: 12px; }
-  .module-bullet { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: var(--text-main); }
-  .bullet-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
-  .dot-blue { background: var(--blue); }
-  .dot-pink { background: var(--pink); }
-  .dot-orange { background: var(--orange); }
-  .dot-violet { background: #C96BF5; }
+  --dark-bg: #0B1120;
+  --dark-surface: #131B2F;
+  --dark-border: #1E293B;
+}
 
-  .module-owner {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-top: 32px;
-    border: 1px solid transparent;
-  }
-  .owner-blue { background: rgba(0,139,248,0.1); color: var(--blue); border-color: rgba(0,139,248,0.2); }
-  .owner-pink { background: rgba(201,107,245,0.1); color: #C96BF5; border-color: rgba(201,107,245,0.2); }
-  .owner-joint { background: #F1F5F9; color: var(--muted); border-color: #E2E8F0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* ── BEFORE / AFTER ── */
-  .ba-grid {
-    display: grid;
-    grid-template-columns: 1fr 80px 1fr;
-    gap: 0;
-    margin-top: 56px;
-    align-items: stretch;
-  }
-  .ba-col {
-    background: var(--bg-white);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-  }
-  .ba-before { border-top: 4px solid #CBD5E1; }
-  .ba-after { border-top: 4px solid var(--blue); box-shadow: 0 12px 30px rgba(0,139,248,0.08); }
-  .ba-label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .before-label { color: var(--muted); }
-  .after-label { color: var(--blue); }
-  .ba-items { display: flex; flex-direction: column; gap: 16px; }
-  .ba-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--text-main);
-  }
-  .ba-icon { flex-shrink: 0; margin-top: 2px; font-size: 0.9rem; font-weight: 700; }
-  .ba-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .arrow-circle {
-    width: 54px; height: 54px;
-    border-radius: 50%;
-    background: var(--grad);
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    box-shadow: 0 0 24px rgba(0,139,248,0.3);
-    z-index: 1;
-  }
+/* DYNAMIC MORPHING NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; height: 96px; width: 100%; max-width: none;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(0);
+}
 
-  /* ── DELIVERABLES ── */
-  .del-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 48px;
-  }
-  .del-card {
-    background: var(--bg-white);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-  }
-  .del-icon { margin-bottom: 20px; color: var(--blue); }
-  .del-title { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: var(--text-main); }
-  .del-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+/* NAV SCROLLED STATE (FLOATING PILL) */
+.nav.scrolled {
+  top: 24px; left: 50%; transform: translateX(-50%);
+  width: 98%; max-width: 1240px; height: auto; min-height: 80px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  border-radius: 100px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.8);
+  padding: 12px 16px 12px 36px;
+}
 
-  /* ── ENGAGEMENT ── */
-  .engage-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 56px;
-  }
-  .engage-card {
-    border-radius: 20px;
-    padding: 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    background: var(--bg-white);
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-  }
-  .ec-session {
-    position: relative;
-    overflow: hidden;
-  }
-  .ec-session::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: var(--grad);
-  }
-  .ec-icon { color: var(--blue); margin-bottom: 4px; }
-  .ec-title { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
-  .ec-desc { font-size: 1rem; color: var(--muted); line-height: 1.6; }
-  .ec-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
-  .ec-item {
-    display: flex; align-items: center; gap: 12px;
-    font-size: 0.95rem; color: var(--text-main); font-weight: 500;
-  }
-  .ec-btn { align-self: flex-start; }
+.nav-logo-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: nowrap; }
+.nav-logo { display: flex; align-items: center; text-decoration: none; gap: 10px; }
 
-  /* ── MATURE B2B FOOTER ── */
-  .footer-advanced {
-    background: var(--bg-dark);
-    color: #FFFFFF;
-    padding: 80px 5% 40px;
-    border-top: 1px solid #1E293B;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 80px;
-  }
-  .brand-col .footer-logos {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
-    background: #FFFFFF; /* White pill to make colored logos pop in dark footer */
-    padding: 12px 20px;
-    border-radius: 8px;
-    display: inline-flex;
-  }
-  .brand-col .footer-logos img { height: 28px; width: auto; }
-  .brand-col p {
-    color: #94A3B8;
-    font-size: 1rem;
-    max-width: 320px;
-    line-height: 1.6;
-  }
-  .contact-col h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #FFFFFF;
-  }
-  .contact-col p {
-    color: #94A3B8;
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-    line-height: 1.5;
-  }
-  .contact-col a {
-    color: #38BDF8;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    display: inline-block;
-    margin-top: 8px;
-  }
-  .contact-col a:hover { text-decoration: underline; }
+/* LOGO SIZING SCALES */
+.nav-logo img { height: 40px; width: auto; transition: all 0.3s; display: block; }
+.nav-logo.saasify-logo img { height: 32px; }
+
+.nav.scrolled .nav-logo img { height: 30px; }
+.nav.scrolled .nav-logo.saasify-logo img { height: 24px; }
+
+.nav-divider { width: 1px; height: 28px; background: var(--border); transition: all 0.3s; }
+.nav.scrolled .nav-divider { height: 24px; }
+.nav-ctas { display: flex; gap: 12px; align-items: center; }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 28px; border-radius: 100px; 
+  font-family: var(--font); font-size: 0.95rem; font-weight: 700;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.2s ease; letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.btn-pink {
+  background: var(--pink); color: var(--white);
+  box-shadow: 0 4px 14px rgba(250,15,156,0.25);
+}
+.btn-pink:hover { background: #E00086; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(250,15,156,0.35); }
+.btn-orange {
+  background: var(--orange); color: var(--white);
+  box-shadow: 0 4px 14px rgba(241,153,83,0.25);
+}
+.btn-orange:hover { background: #E0843D; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(241,153,83,0.35); }
+.btn-xl { padding: 18px 40px; font-size: 1.05rem; }
+
+/* Header CTA Adjustments */
+.nav-ctas .btn { padding: 12px 24px; font-size: 0.9rem; }
+
+/* LAYOUT UTILS */
+section { padding: 110px 6%; }
+.wrap { max-width: 1140px; margin: 0 auto; }
+.center { text-align: center; }
+.text-left { text-align: left !important; } /* Guarantees grids and timeline text stays left-aligned */
+
+/* SECTION LABELS */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--muted);
+  background: var(--border);
+  padding: 6px 16px; border-radius: 100px;
+  margin-bottom: 24px;
+}
+.dark-mode .eyebrow { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15); }
+
+.section-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.03em;
+  color: var(--text); margin-bottom: 20px;
+}
+.dark-mode .section-title { color: var(--white); }
+.section-sub {
+  font-size: 1.15rem; color: var(--muted); max-width: 720px;
+  margin: 0 auto 56px; line-height: 1.65;
+}
+.dark-mode .section-sub { color: rgba(255,255,255,0.65); }
+
+/* HERO */
+.hero {
+  min-height: 95vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 160px 6% 60px;
+  background: var(--white);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(0,139,248,0.05) 0%, transparent 60%); pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 8px 24px; border-radius: 100px;
+  background: #F1F5F9; color: #475569;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;
+  margin-bottom: 32px; border: 1px solid #E2E8F0; text-transform: uppercase;
+}
+.hero-headline {
+  font-size: clamp(1.8rem, 7vw, 3.6rem); 
+  font-weight: 900; line-height: 1.15;
+  letter-spacing: -0.02em; max-width: 900px;
+  margin: 0 auto 24px; color: #1A202C;
+}
+.hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem); color: var(--muted);
+  max-width: 800px; margin: 0 auto 16px; font-weight: 400; line-height: 1.6;
+}
+.hero-actions {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  margin-top: 48px;
+}
+
+/* CARDS GRID */
+.light-bg { background: var(--light); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 40px 32px; text-align: left;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); border-color: var(--blue); }
+
+.card-icon {
+  width: 56px; height: 56px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px; 
+}
+.card-icon.purple { background: rgba(129, 70, 255, 0.08); color: var(--purple); }
+.card-icon.blue { background: rgba(0,139,248,0.08); color: var(--blue); }
+.card-icon.orange { background: rgba(241,153,83,0.1); color: var(--orange); }
+
+.card-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; color: var(--text); }
+.card-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
+
+/* HIGH-IMPACT TIMELINE (Calculated variables guarantee bulletproof alignment) */
+.dark-section { background: var(--dark-bg); color: var(--white); }
+.timeline-wrap { 
+  --node-size: 54px;
+  --tl-pad: 20px;
+  --line-w: 3px;
+  max-width: 860px; margin: 0 auto; position: relative; 
+  padding-left: var(--tl-pad); 
+}
+.timeline-path {
+  position: absolute; 
+  /* Mathematically guaranteed center regardless of browser scaling */
+  left: calc(var(--tl-pad) + (var(--node-size) / 2) - (var(--line-w) / 2)); 
+  top: 30px; bottom: 30px;
+  width: var(--line-w); background: var(--dark-border); border-radius: 3px;
+}
+.timeline-progress {
+  position: absolute; left: 0; top: 0; width: 100%; height: 0%;
+  background: linear-gradient(to bottom, var(--blue), var(--pink));
+  border-radius: 3px; transition: height 0.5s ease;
+}
+.tl-item { 
+  display: flex; gap: 48px; margin-bottom: 48px; position: relative; align-items: flex-start;
+  opacity: 0.5; transition: opacity 0.5s ease, transform 0.5s ease; transform: translateX(-20px);
+}
+.tl-item.active { opacity: 1; transform: translateX(0); }
+.tl-node {
+  width: var(--node-size); height: var(--node-size); flex-shrink: 0; border-radius: 50%;
+  background: var(--dark-surface); border: 2px solid var(--dark-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; font-weight: 900; color: var(--muted); z-index: 2;
+  transition: all 0.5s ease;
+}
+.tl-item.active .tl-node {
+  background: var(--dark-bg); border-color: var(--blue); color: var(--blue);
+  box-shadow: 0 0 20px rgba(0,139,248,0.4);
+}
+.tl-content {
+  flex-grow: 1; background: var(--dark-surface); border: 1px solid var(--dark-border);
+  border-radius: 16px; padding: 40px; transition: border-color 0.3s;
+}
+.tl-item.active .tl-content { border-color: rgba(255,255,255,0.15); }
+.tl-eyebrow { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pink); margin-bottom: 8px; display: block; }
+.tl-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 16px; color: var(--white); }
+.tl-desc { font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+/* THE MECHANISM */
+.synergy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1040px; margin: 0 auto; text-align: left; }
+.syn-content {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 48px 40px; text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 20px;
+  border-top: 4px solid var(--blue);
+}
+.syn-logo { height: 32px; width: auto; align-self: flex-start; }
+.syn-title { font-size: 1.3rem; font-weight: 800; color: var(--text); }
+.syn-desc { font-size: 1rem; color: var(--muted); line-height: 1.6; }
+
+/* DELIVERABLES */
+.del-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1040px; margin: 0 auto; text-align: left; }
+.del-card {
+  background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--blue);
+  border-radius: 12px; padding: 40px; display: flex; flex-direction: column; text-align: left;
+}
+.del-card.purple { border-top-color: var(--purple); }
+.del-card.orange { border-top-color: var(--orange); }
+.del-card.pink { border-top-color: var(--pink); }
+.del-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 16px; color: var(--text); }
+.del-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+.del-impact {
+  margin-top: auto; padding: 0 0 0 16px; border-left: 2px solid var(--blue);
+  font-size: 0.95rem; font-weight: 500; color: var(--text); line-height: 1.6; text-align: left;
+}
+
+/* ICP */
+.icp-wrap { display: grid; grid-template-columns: 1fr; max-width: 800px; margin: 0 auto; text-align: left; }
+.icp-box { background: var(--dark-surface); border: 1px solid var(--dark-border); border-radius: 16px; padding: 40px; }
+.icp-list { list-style: none; }
+.icp-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.icp-item:last-child { border-bottom: none; padding-bottom: 0; }
+.icp-check { color: #48BB78; flex-shrink: 0; margin-top: 2px; }
+.icp-text { font-size: 1rem; color: rgba(255,255,255,0.85); font-weight: 500; line-height: 1.6; text-align: left; }
+
+/* CTA */
+.cta-gradient {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--pink) 100%);
+  color: var(--white); text-align: center; padding: 120px 6%;
+}
+.cta-gradient .section-title { color: var(--white); margin-bottom: 24px; font-size: clamp(2.2rem, 4.5vw, 3.2rem); }
+.cta-gradient .section-sub { color: rgba(255,255,255,0.95); margin-bottom: 48px; font-weight: 500; font-size: 1.25rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+/* FOOTER */
+footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid var(--border); text-align: left; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; max-width: 1140px; margin: 0 auto; margin-bottom: 60px; }
+.footer-logo { height: 32px; margin-bottom: 20px; }
+.footer-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; max-width: 400px; }
+.footer-links h4 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px; color: var(--text); }
+.footer-links a { display: block; font-size: 0.95rem; color: var(--muted); text-decoration: none; margin-bottom: 12px; }
+.footer-links a:hover { color: var(--blue); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 32px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+/* RESPONSIVE (Tablets) */
+@media (max-width: 900px) {
+  .grid-3, .synergy-grid, .del-grid, .icp-wrap, .footer-grid { grid-template-columns: 1fr; }
+  .timeline-wrap { --node-size: 40px; --tl-pad: 20px; }
+  .tl-item { gap: 24px; }
+  .tl-node { font-size: 1rem; }
+  .tl-content { padding: 32px 24px; }
+}
+
+@media (max-width: 768px) {
+  .nav-ctas .btn { padding: 10px 16px; font-size: 0.85rem; }
+  .hero { padding: 160px 5% 80px; }
+}
+
+/* RESPONSIVE (Mobile Phones) */
+@media (max-width: 640px) {
+  section { padding: 100px 5% 70px; } 
   
-  .footer-bottom {
-    border-top: 1px solid #1E293B;
-    padding-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    color: #64748B;
-    font-size: 0.85rem;
+  /* Mobile Nav Centering Fixes */
+  .nav { justify-content: center; padding: 0 5%; }
+  .nav.scrolled { 
+    width: 92%; padding: 12px 16px; border-radius: 40px; 
+    min-height: 56px; justify-content: center; top: 16px;
   }
-  .footer-bottom-links a {
-    color: #64748B;
-    text-decoration: none;
-    margin-left: 24px;
-  }
-  .footer-bottom-links a:hover { color: #FFFFFF; }
+  
+  /* Ensure logos are strictly centered and never vanish */
+  .nav-logo-wrap { gap: 16px; justify-content: center; width: 100%; }
+  .nav-logo img { height: 26px !important; width: auto !important; }
+  .nav-logo.saasify-logo img { height: 20px !important; }
+  
+  .nav.scrolled .nav-logo img { height: 24px !important; }
+  .nav.scrolled .nav-logo.saasify-logo img { height: 18px !important; }
+  
+  .nav-divider { display: none; }
+  .nav-ctas { display: none !important; } 
+  
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; }
+  .section-title { font-size: clamp(2rem, 8vw, 2.5rem); }
+}
 
-  /* ── STICKY MOBILE CTA ── */
-  .sticky-cta {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    z-index: 99;
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 10px 10px 10px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
-    opacity: 0;
-    white-space: nowrap;
-  }
-  .sticky-cta.visible { transform: translateX(-50%) translateY(0); opacity: 1; }
-  .sticky-label { font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .problem-grid, .modules-grid, .engage-grid { grid-template-columns: 1fr; }
-    .ba-grid { grid-template-columns: 1fr; gap: 16px; }
-    .ba-center { transform: rotate(90deg); padding: 12px 0; }
-    .del-grid { grid-template-columns: 1fr 1fr; }
-    .nav-cta .btn-ghost { display: none; }
-    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-  }
-  @media (max-width: 600px) {
-    section { padding: 80px 5%; }
-    .hero { padding: 140px 5% 60px; }
-    .del-grid { grid-template-columns: 1fr; }
-    .hero-actions { flex-direction: column; align-items: center; width: 100%; }
-    .hero-actions .btn { width: 100%; justify-content: center; }
-    .ba-center { display: none; }
-  }
+/* ULTRA-SMALL MOBILE */
+@media (max-width: 480px) {
+  .hero { padding-top: 140px; } /* Ensures badge is fully visible */
+  .timeline-wrap { --node-size: 32px; --tl-pad: 12px; }
+  .tl-item { gap: 16px; }
+  .tl-node { font-size: 0.9rem; }
+  .tl-content { padding: 24px 16px; }
+  .tl-title { font-size: 1.15rem; }
+  .tl-desc { font-size: 0.9rem; }
+  .card { padding: 32px 24px; }
+}
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav class="nav">
-  <div class="nav-brand">
-    <img src="logo-color.png" alt="SaaSNova" style="height: 36px; width: auto;">
-    <span class="nav-sep">×</span>
-    <img src="saasify-logo.png" alt="SaaSify" style="height: 36px; width: auto;">
+<!-- DYNAMIC MORPHING NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo-wrap">
+    <a href="https://saasnova.ai" class="nav-logo saasnova-logo">
+      <img src="saasnova-logo.png" alt="SaaSNova" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSNova'">
+    </a>
+    <div class="nav-divider"></div>
+    <a href="https://saasify.ai" class="nav-logo saasify-logo">
+      <img src="saasify-logo.png" alt="SaaSify" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSify'">
+    </a>
   </div>
-  <div class="nav-cta">
-    <a href="mailto:sales@saasify.ai" class="btn btn-ghost">Book Strategy Session</a>
-    <a href="mailto:operations@saasnova.ai" class="btn btn-primary">Get Bundle Overview</a>
+  <div class="nav-ctas">
+    <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank" class="btn btn-pink">Book a Strategy Session &rarr;</a>
+    <a href="mailto:operations@saasnova.ai?subject=AWS Partner Starter Bundle Overview Request" class="btn btn-orange">Request Bundle Overview</a>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
-<section class="hero bg-white">
-  <div class="hero-badge">
-    <img src="aws-logo.png" alt="AWS" style="height: 16px; margin-right: 6px; margin-top: -1px;">
-    Partner Network · Execution-First Bundle
-  </div>
-
-  <h1 class="hero-headline">
-    Go from AWS Partner<br>
-    to <span class="grad-text">Co-Sell Ready</span><br>
-    in 4 Weeks.
-  </h1>
-
-  <p class="hero-sub">
-    Marketplace live. Partner Central done. GTM aligned with AWS field teams.
-    All workstreams run in parallel — not in sequence.
-  </p>
-
-  <div class="hero-actions">
-    <a href="mailto:operations@saasnova.ai" class="btn btn-primary">Request Bundle Overview →</a>
-    <a href="mailto:sales@saasify.ai" class="btn btn-ghost">Book a Strategy Session</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap center">
+    <div class="hero-badge">AWS Partner Starter Bundle</div>
+    <h1 class="hero-headline">
+      Accelerate Your Cloud GTM with<br>
+      <span style="color: var(--blue);">SaaSNova</span> &times; <span style="color: var(--purple);">SaaSify</span>
+    </h1>
+    <p class="hero-sub">
+      You want AWS channel revenue. We build the operational foundation to capture it. We launch your Marketplace listing, wire your ACE CRM integration, and arm your sales team with field-validated narratives in parallel. Stop waiting months. Start closing in 4 weeks.
+    </p>
+    <div class="hero-actions">
+      <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank" class="btn btn-pink btn-xl">Book a Strategy Session &rarr;</a>
+      <a href="mailto:operations@saasnova.ai?subject=AWS Partner Starter Bundle Overview Request" class="btn btn-orange btn-xl">Request Bundle Overview</a>
+    </div>
   </div>
 </section>
 
-<!-- ── PROBLEM ── -->
-<section class="problem bg-alt">
-  <div class="container">
-    <div class="section-label">The Problem</div>
-    <h2 class="section-title">ISVs join AWS unprepared.<br>Months pass. No pipeline.</h2>
-    <p class="section-sub">The AWS Partner Network is powerful — but only if you enter it execution-ready. Most ISVs don't.</p>
+<!-- THE CONSEQUENCE OF DELAY -->
+<section class="light-bg border-y border-border">
+  <div class="wrap center">
+    <div class="eyebrow">The Cost of Waiting</div>
+    <h2 class="section-title">Every month without infrastructure is lost revenue.</h2>
+    <p class="section-sub">AWS does not hand out pipeline to unprepared vendors. If you aren't operationally ready to co-sell, you get zero field priority.</p>
+    
+    <div class="grid-3 text-left">
+      <div class="card">
+        <div class="card-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 class="card-title">The 6-Month Black Hole</h3>
+        <p class="card-desc">ISVs relying on piecemeal vendor setups lose 2–3 quarters just trying to align CRM mapping with Partner Central compliance. Revenue stalls entirely.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="card-title">Pipeline Throttling</h3>
+        <p class="card-desc">Without bi-directional ACE integration, your reps won't share data. When data isn't shared, AWS reps ignore you. The flywheel never spins.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <h3 class="card-title">Procurement Friction</h3>
+        <p class="card-desc">Enterprise buyers want to burn committed cloud spend. If your Private Offer engine isn't frictionless, they will buy from a competitor who is.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="problem-grid">
-      <div class="problem-list">
-        <div class="problem-item">
-          <div class="problem-num">01</div>
-          <div class="problem-text">
-            <strong>No AWS-aligned GTM motion</strong>
-            <span>ISVs enter APN with generic positioning. AWS field teams can't refer what they can't place in context.</span>
-          </div>
-        </div>
-        <div class="problem-item">
-          <div class="problem-num">02</div>
-          <div class="problem-text">
-            <strong>Marketplace confusion stalls activation</strong>
-            <span>Listing requirements, private offer setup, and technical specs cause weeks of back-and-forth with no owner.</span>
-          </div>
-        </div>
-        <div class="problem-item">
-          <div class="problem-num">03</div>
-          <div class="problem-text">
-            <strong>GTM, Partner Central, Marketplace — handled separately</strong>
-            <span>Different vendors, different timelines, no shared output. Delays compound. Co-sell opportunities disappear.</span>
-          </div>
-        </div>
-        <div class="problem-item">
-          <div class="problem-num">04</div>
-          <div class="problem-text">
-            <strong>Guidance instead of execution</strong>
-            <span>Most AWS partners give you a playbook and leave. Nobody runs the play. You're left holding a slide deck.</span>
-          </div>
+<!-- WHAT'S BREAKING YOUR PIPELINE -->
+<section>
+  <div class="wrap center">
+    <div class="eyebrow" style="color:var(--orange); border-color:rgba(241,153,83,0.25); background:rgba(241,153,83,0.1);">The Execution Gap</div>
+    <h2 class="section-title">What is currently breaking your AWS channel.</h2>
+    <p class="section-sub">Joining the partner network is free. Generating pipeline requires architecture most ISVs lack.</p>
+    
+    <div class="grid-3 text-left">
+      <div class="card">
+        <div class="card-icon purple"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3 class="card-title">Fragmented Deployment</h3>
+        <p class="card-desc">You pay one agency for messaging and another for API integration. The disjointed handoffs cost you tens of thousands in lost time.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon blue"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3 class="card-title">Invisible to the Field</h3>
+        <p class="card-desc">Your ICP isn't mapped to AWS strategic goals. To an AWS Account Manager, you look exactly like thousands of other unvetted ISVs.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon purple"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3 class="card-title">Compliance Roadblocks</h3>
+        <p class="card-desc">Improper hygiene on Partner Central instantly blocks eligibility, halting your progression toward ISV Accelerate or higher tiers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESSIVE OUTCOME TIMELINE -->
+<section class="dark-section dark-mode">
+  <div class="wrap center">
+    <div class="eyebrow" style="color:var(--pink); border-color:rgba(250,15,156,0.25); background:rgba(250,15,156,0.1);">The Transformation</div>
+    <h2 class="section-title">The 4-Week Escalation Protocol.</h2>
+    <p class="section-sub" style="margin-bottom: 80px;">We do not deliver advice. We deliver active, production-ready systems layered sequentially over 28 days to unlock immediate commercial readiness.</p>
+
+    <div class="timeline-wrap text-left" id="timeline">
+      <div class="timeline-path">
+        <div class="timeline-progress" id="tl-progress"></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-node">1</div>
+        <div class="tl-content">
+          <span class="tl-eyebrow">Week 1 Outcome</span>
+          <h3 class="tl-title">Enterprise Visibility Established</h3>
+          <p class="tl-desc">Your core marketplace architecture goes live. Crucially, your CRM (Salesforce/HubSpot) is securely tethered to AWS data streams, establishing the foundation for automated deal routing.</p>
         </div>
       </div>
 
-      <div class="shift-card">
-        <div class="shift-title">The bundle removes<br>execution friction — entirely.</div>
-        <div class="shift-points">
-          <div class="shift-point">
-            <div class="shift-check">✓</div>
-            Both workstreams — Marketplace and GTM — run in parallel from Day 1, not in sequence
-          </div>
-          <div class="shift-point">
-            <div class="shift-check">✓</div>
-            You get operators, not advisors. Every deliverable is production-ready and field-tested
-          </div>
-          <div class="shift-point">
-            <div class="shift-check">✓</div>
-            AWS scoring, co-sell narrative, and private offer automation — live within weeks
-          </div>
-          <div class="shift-point">
-            <div class="shift-check">✓</div>
-            Structured to generate AWS channel pipeline from Day 5 — not Day 90
-          </div>
+      <div class="tl-item">
+        <div class="tl-node">2</div>
+        <div class="tl-content">
+          <span class="tl-eyebrow">Week 2 Outcome</span>
+          <h3 class="tl-title">Sales Team Armed & Dangerous</h3>
+          <p class="tl-desc">Your reps stop pitching features and start pitching joint AWS value. We deliver field-tested "Better Together" narratives specifically engineered to map your solution to AWS rep quotas.</p>
         </div>
-        <div class="shift-divider"></div>
-        <div class="shift-stat">
-          <div class="stat">
-            <div class="stat-num">3–4</div>
-            <div class="stat-label">Weeks to co-sell ready</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">2</div>
-            <div class="stat-label">Workstreams in parallel</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">4</div>
-            <div class="stat-label">Production deliverables</div>
-          </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-node">3</div>
+        <div class="tl-content">
+          <span class="tl-eyebrow">Week 3 Outcome</span>
+          <h3 class="tl-title">Frictionless Procurement Unlocked</h3>
+          <p class="tl-desc">Demand generation pathways are activated. Enterprise buyers can now execute complex Private Offers directly through your listing, bypassing their internal procurement red tape.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-node">4</div>
+        <div class="tl-content">
+          <span class="tl-eyebrow">Week 4 Outcome</span>
+          <h3 class="tl-title">Sustained Deal Flow Initiated</h3>
+          <p class="tl-desc">Hand-off complete. Your internal teams take ownership of a fully automated, compliance-locked engine. You are officially hunting with AWS field teams.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── BUNDLE MODULES ── -->
-<section class="modules bg-white">
-  <div class="container">
-    <div class="modules-header">
+<!-- THE MECHANISM -->
+<section class="light-bg border-y border-border">
+  <div class="wrap">
+    <div class="center" style="margin-bottom: 60px;">
+      <div class="eyebrow">The Mechanism</div>
+      <h2 class="section-title">How the Unified Engine Actually Works</h2>
+      <p class="section-sub">We eliminate the gap between go-to-market strategy and deep technical engineering.</p>
+    </div>
+
+    <div class="synergy-grid text-left">
+      <div class="syn-content">
+        <img src="saasnova-logo.png" alt="SaaSNova" class="syn-logo" onerror="this.src='https://via.placeholder.com/150x30?text=SaaSNova'">
+        <h3 class="syn-title">The Strategic Tip of the Spear</h3>
+        <p class="syn-desc">SaaSNova decodes exactly what AWS field reps are compensated on. We take your software, define the precise ICP, and map your value prop directly to AWS strategic priorities. You stop guessing what the field wants and give them exactly what they need to hit quota.</p>
+      </div>
+      
+      <div class="syn-content" style="border-top-color:var(--purple);">
+        <img src="saasify-logo.png" alt="SaaSify" class="syn-logo" onerror="this.src='https://via.placeholder.com/150x30?text=SaaSify'">
+        <h3 class="syn-title">The Technical Backbone</h3>
+        <p class="syn-desc">SaaSify hardcodes your operational compliance. While strategy is finalized, engineering deploys your Marketplace listing, sets up seamless Private Offer guardrails, and wires your CRM directly into the AWS ACE portal so data flows without human friction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section>
+  <div class="wrap center">
+    <div class="eyebrow">Business Impact</div>
+    <h2 class="section-title">Deliverables that dictate revenue.</h2>
+    <p class="section-sub">We don't hand over slideware, We deploy operational assets that unlock specific commercial capabilities.</p>
+    
+    <div class="del-grid text-left">
+      <div class="del-card">
+        <h3 class="del-title">Marketplace Optimization</h3>
+        <p class="del-desc">A complete structural overhaul of your AWS listing and buyer-facing collateral.</p>
+        <div class="del-impact">
+          <span style="color:var(--blue); font-weight:700;">&rarr; Unlocks:</span> Bypasses procurement red tape so enterprise buyers can burn committed cloud spend (EDP) on your software instantly.
+        </div>
+      </div>
+      <div class="del-card purple">
+        <h3 class="del-title">Co-Sell Data Automation</h3>
+        <p class="del-desc">A hardened, bi-directional API connection between your CRM and the AWS ACE Portal.</p>
+        <div class="del-impact" style="border-left-color:var(--purple);">
+          <span style="color:var(--purple); font-weight:700;">&rarr; Unlocks:</span> Guarantees every qualified lead is immediately visible to AWS reps, ensuring you get quota-credit leverage.
+        </div>
+      </div>
+      <div class="del-card orange">
+        <h3 class="del-title">Targeted Account Mapping</h3>
+        <p class="del-desc">Precision mapping of your target pipeline against active AWS strategic priorities.</p>
+        <div class="del-impact" style="border-left-color:var(--orange);">
+          <span style="color:var(--orange); font-weight:700;">&rarr; Unlocks:</span> Focuses your outbound sales execution purely on accounts primed to transact, preventing wasted sales cycles.
+        </div>
+      </div>
+      <div class="del-card pink">
+        <h3 class="del-title">Field Enablement Playbooks</h3>
+        <p class="del-desc">Rigorous documentation of your ICP and joint value proposition built for field consumption.</p>
+        <div class="del-impact" style="border-left-color:var(--pink);">
+          <span style="color:var(--pink); font-weight:700;">&rarr; Unlocks:</span> Gives AWS Account Managers the exact narrative they need to confidently introduce your software to their best clients.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="dark-section dark-mode border-y border-dark-border">
+  <div class="wrap center">
+    <div class="eyebrow">Who this is for</div>
+    <h2 class="section-title">Built for ISVs ready to move.</h2>
+    <p class="section-sub" style="margin-bottom: 56px;">This execution framework is highly specialized. It requires an organization capable of scaling immediately.</p>
+    
+    <div class="icp-wrap text-left">
+      <div class="icp-box">
+        <ul class="icp-list">
+          <li class="icp-item">
+            <div class="icp-check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="icp-text">Seed to Series C cloud-native ISVs actively seeking AWS channel revenue.</div>
+          </li>
+          <li class="icp-item">
+            <div class="icp-check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="icp-text">Partners enrolled in APN but facing friction converting tier status into closed deals.</div>
+          </li>
+          <li class="icp-item">
+            <div class="icp-check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="icp-text">Organizations currently executing direct sales without formalized co-sell data automation.</div>
+          </li>
+          <li class="icp-item">
+            <div class="icp-check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="icp-text">Enterprise B2B SaaS firms targeting systemic revenue alignment via the AWS channel.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-gradient">
+  <div class="wrap center">
+    <h2 class="section-title">The Window of Opportunity is Open Now.</h2>
+    <p class="section-sub">Every quarter you delay AWS execution is enterprise pipeline ceded to your competitors. Let's deploy the infrastructure today.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; align-items:center;">
+      <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank" class="btn" style="background:var(--white); color:var(--text); padding:16px 36px; font-size:1.05rem;">Book a Strategy Session &rarr;</a>
+      <a href="mailto:operations@saasnova.ai?subject=AWS Partner Starter Bundle Overview Request" class="btn" style="background:transparent; border:2px solid var(--white); color:var(--white); padding:16px 36px; font-size:1.05rem;">Request Bundle Overview</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid text-left">
+      <!-- Brand Col -->
       <div>
-        <div class="section-label">The Blueprint</div>
-        <h2 class="section-title">Four parallel workstreams.</h2>
-      </div>
-      <p style="color: var(--muted); font-size: 1rem; max-width: 320px; text-align: right; line-height: 1.6;">
-        Executed seamlessly with no handoff delays and zero misalignment between partners.
-      </p>
-    </div>
-
-    <div class="modules-grid">
-      <!-- Module 1 -->
-      <div class="module-card mc-blue">
-        <div class="module-header">
-          <div class="module-icon icon-blue">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-          </div>
-          <div>
-            <div class="module-week week-blue">Week 0 · SaaSNova + SaaSify</div>
-          </div>
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+          <img src="saasnova-logo.png" alt="SaaSNova" class="footer-logo" onerror="this.src='https://via.placeholder.com/100x30?text=SaaSNova'">
+          <img src="saasify-logo.png" alt="SaaSify" class="footer-logo" onerror="this.src='https://via.placeholder.com/100x30?text=SaaSify'">
         </div>
-        <div class="module-title">Baseline Alignment</div>
-        <div class="module-outcome">Set the foundation before a single workstream begins — shared definition of what success looks like.</div>
-        <div class="module-bullets">
-          <div class="module-bullet"><span class="bullet-dot dot-blue"></span>GTM maturity baseline and ICP gap review with KPI definition</div>
-          <div class="module-bullet"><span class="bullet-dot dot-blue"></span>Marketplace readiness confirmed — listing prerequisites validated</div>
-          <div class="module-bullet"><span class="bullet-dot dot-blue"></span>AWS scoring alignment mapped; mutual "definition of done" agreed</div>
-        </div>
-        <div class="module-owner owner-joint">⚡ Joint Execution</div>
+        <p class="footer-desc">Architecting scalable cloud commerce and unified go-to-market frameworks for high-growth ISVs. Immediate deployment engineered to secure marketplace advantage.</p>
       </div>
 
-      <!-- Module 2 -->
-      <div class="module-card mc-violet">
-        <div class="module-header">
-          <div class="module-icon icon-aws">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C96BF5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <div>
-            <div class="module-week week-violet">Weeks 1–2 · SaaSNova</div>
-          </div>
-        </div>
-        <div class="module-title">Partner Central Readiness</div>
-        <div class="module-outcome">Get your AWS Partner Network profile optimized, scored, and on the path to ISVA or Select Tier.</div>
-        <div class="module-bullets">
-          <div class="module-bullet"><span class="bullet-dot dot-violet"></span>Partner Central enablement and profile hygiene completed</div>
-          <div class="module-bullet"><span class="bullet-dot dot-violet"></span>ISVA / Select Tier pathway mapped with exact requirements</div>
-          <div class="module-bullet"><span class="bullet-dot dot-violet"></span>AWS scoring confirmed and validation steps documented</div>
-        </div>
-        <div class="module-owner owner-pink">🎯 Driven by SaaSNova</div>
-      </div>
-
-      <!-- Module 3 -->
-      <div class="module-card mc-orange">
-        <div class="module-header">
-          <div class="module-icon icon-orange">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-          </div>
-          <div>
-            <div class="module-week week-orange">Weeks 1–4 · SaaSify</div>
-          </div>
-        </div>
-        <div class="module-title">Marketplace Presence Activated</div>
-        <div class="module-outcome">Your AWS Marketplace listing goes live with private offer automation in place — end to end.</div>
-        <div class="module-bullets">
-          <div class="module-bullet"><span class="bullet-dot dot-orange"></span>Marketplace listing built and activated end-to-end</div>
-          <div class="module-bullet"><span class="bullet-dot dot-orange"></span>Private offer automation configured and tested</div>
-          <div class="module-bullet"><span class="bullet-dot dot-orange"></span>Listing confirmed live and co-sell-ready before Week 4 closeout</div>
-        </div>
-        <div class="module-owner owner-blue">🚀 Driven by SaaSify</div>
-      </div>
-
-      <!-- Module 4 -->
-      <div class="module-card mc-pink">
-        <div class="module-header">
-          <div class="module-icon icon-pink">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div>
-            <div class="module-week week-pink">Weeks 2–4 · SaaSNova</div>
-          </div>
-        </div>
-        <div class="module-title">GTM & Co-Sell Execution</div>
-        <div class="module-outcome">AWS-aligned messaging and co-sell narrative built for real field use — not slide decks.</div>
-        <div class="module-bullets">
-          <div class="module-bullet"><span class="bullet-dot dot-pink"></span>ICP confirmed and use cases prioritized for AWS segments</div>
-          <div class="module-bullet"><span class="bullet-dot dot-pink"></span>AWS "Better Together" co-sell messaging developed</div>
-          <div class="module-bullet"><span class="bullet-dot dot-pink"></span>Early AWS field alignment initiated; Phase 2 ACE pipeline scoped</div>
-        </div>
-        <div class="module-owner owner-pink">🎯 Driven by SaaSNova</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── BEFORE / AFTER ── -->
-<section class="outcome bg-alt">
-  <div class="container">
-    <div class="section-label">The Transformation</div>
-    <h2 class="section-title">What changes in 4 weeks.</h2>
-    <p class="section-sub">Not a roadmap. Not a playbook. A live AWS partner with a go-to-market that generates pipeline.</p>
-
-    <div class="ba-grid">
-      <div class="ba-col ba-before">
-        <div class="ba-label before-label">⬤ Without the Bundle</div>
-        <div class="ba-items">
-          <div class="ba-item"><span class="ba-icon" style="color:#94A3B8;">✗</span>Enrolled in APN but no Marketplace listing — invisible to buyers</div>
-          <div class="ba-item"><span class="ba-icon" style="color:#94A3B8;">✗</span>Generic messaging — AWS field teams can't refer you</div>
-          <div class="ba-item"><span class="ba-icon" style="color:#94A3B8;">✗</span>Partner Central score unknown; tier pathway unclear</div>
-          <div class="ba-item"><span class="ba-icon" style="color:#94A3B8;">✗</span>GTM, Marketplace, and partner work handled separately</div>
-          <div class="ba-item"><span class="ba-icon" style="color:#94A3B8;">✗</span>First deal may take 6–12 months — no structured channel activation</div>
-          <div class="ba-item"><span class="ba-icon" style="color:#94A3B8;">✗</span>Execution guidance handed to your team. You're on your own.</div>
-        </div>
-      </div>
-
-      <div class="ba-center">
-        <div class="arrow-circle">→</div>
-      </div>
-
-      <div class="ba-col ba-after">
-        <div class="ba-label after-label">⬤ After the Bundle</div>
-        <div class="ba-items">
-          <div class="ba-item"><span class="ba-icon" style="color:var(--blue)">✓</span>Live AWS Marketplace listing with private offer automation</div>
-          <div class="ba-item"><span class="ba-icon" style="color:var(--blue)">✓</span>Documented ICP + AWS "Better Together" co-sell narrative</div>
-          <div class="ba-item"><span class="ba-icon" style="color:var(--blue)">✓</span>Partner Central scored, ISVA/Select Tier pathway confirmed</div>
-          <div class="ba-item"><span class="ba-icon" style="color:var(--blue)">✓</span>Single coordinated engagement — completely aligned from Day 1</div>
-          <div class="ba-item"><span class="ba-icon" style="color:var(--blue)">✓</span>AWS channel pipeline generation starts Week 5 — not Month 6</div>
-          <div class="ba-item"><span class="ba-icon" style="color:var(--blue)">✓</span>Phase 2 roadmap (co-sell, ACE, field) handed off — ready</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── DELIVERABLES ── -->
-<section class="deliverables bg-white">
-  <div class="container">
-    <div class="section-label">What You Leave With</div>
-    <h2 class="section-title">Four production-ready deliverables.</h2>
-    <p class="section-sub">Not recommendations on a slide. Assets built to activate AWS channel pipeline.</p>
-
-    <div class="del-grid">
-      <div class="del-card">
-        <div class="del-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        </div>
-        <div class="del-title">Live Marketplace Listing</div>
-        <div class="del-desc">Fully configured AWS Marketplace listing with private offer automation in place and confirmed live.</div>
-      </div>
-      <div class="del-card">
-        <div class="del-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-        </div>
-        <div class="del-title">Co-Sell Messaging</div>
-        <div class="del-desc">Documented ICP and AWS-aligned "Better Together" narrative ready for field use and ACE submissions.</div>
-      </div>
-      <div class="del-card">
-        <div class="del-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
-        </div>
-        <div class="del-title">Partner Central Pathway</div>
-        <div class="del-desc">ISVA / Select Tier goals mapped, AWS scoring validated, and Partner Central hygiene completed.</div>
-      </div>
-      <div class="del-card">
-        <div class="del-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-        </div>
-        <div class="del-title">Phase 2 Roadmap</div>
-        <div class="del-desc">Structured next-step plan covering co-sell, ACE, and field enablement — ready for immediate activation.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── ENGAGEMENT ── -->
-<section class="engage bg-alt">
-  <div class="container">
-    <div class="section-label">Get Started</div>
-    <h2 class="section-title">Two paths forward.<br>One clear outcome.</h2>
-
-    <div class="engage-grid">
-      <div class="engage-card">
-        <div class="ec-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <div class="ec-title">Want full details?</div>
-        <div class="ec-desc">Get the complete bundle breakdown — deliverables, timeline, pricing, and what each workstream includes.</div>
-        <div class="ec-list">
-          <div class="ec-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Full scope document
-          </div>
-          <div class="ec-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Workstream breakdown by week
-          </div>
-          <div class="ec-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Pricing & engagement terms
-          </div>
-        </div>
-        <a href="mailto:operations@saasnova.ai?subject=AWS Partner Starter Bundle — Request Overview" class="btn btn-outline ec-btn">Request Bundle Overview →</a>
-      </div>
-
-      <div class="engage-card ec-session">
-        <div class="ec-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <div class="ec-title">Ready to move fast?</div>
-        <div class="ec-desc">Book a 30-minute strategy session. We'll assess your current AWS standing and walk you through exactly what the bundle delivers for your stage.</div>
-        <div class="ec-list">
-          <div class="ec-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            AWS readiness assessment
-          </div>
-          <div class="ec-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Current Partner Central score review
-          </div>
-          <div class="ec-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Timeline scoping
-          </div>
-        </div>
-        <a href="mailto:sales@saasify.ai?subject=AWS Partner Starter Bundle — Strategy Session Request" class="btn btn-primary ec-btn">Book Strategy Session →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── MATURE FOOTER ── -->
-<footer class="footer-advanced">
-  <div class="container">
-    <div class="footer-grid">
-      <!-- Brand & Summary -->
-      <div class="brand-col">
-        <div class="footer-logos">
-          <img src="logo-color.png" alt="SaaSNova">
-          <span style="color:#CBD5E1; font-weight:300;">×</span>
-          <img src="saasify-logo.png" alt="SaaSify">
-        </div>
-        <p>A unified GTM strategy, co-sell automation, and Marketplace execution engine for cloud-native ISVs delivered in weeks, not months.</p>
-      </div>
-
-      <!-- SaaSNova Contact -->
-      <div class="contact-col">
-        <h4>SaaSNova</h4>
-        <p>Strategic GTM leadership and pipeline acceleration for cloud-native ISVs.</p>
+      <!-- Links 1 -->
+      <div class="footer-links">
+        <h4>Contact</h4>
         <a href="mailto:operations@saasnova.ai">operations@saasnova.ai</a>
+        <a href="mailto:marketing@saasnova.ai">marketing@saasnova.ai</a>
       </div>
 
-      <!-- SaaSify Contact -->
-      <div class="contact-col">
-        <h4>SaaSify</h4>
-        <p>CRM integration and co-sell automation for multi-cloud marketplaces.</p>
-        <a href="mailto:sales@saasify.ai">sales@saasify.ai</a>
+      <!-- Links 2 -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="https://saasnova.ai" target="_blank">SaaSNova Homepage</a>
+        <a href="https://saasify.ai" target="_blank">SaaSify Homepage</a>
+        <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank">Book a Strategy Session</a>
       </div>
     </div>
-
-    <!-- Bottom Bar -->
     <div class="footer-bottom">
-      <div>&copy; 2026 SaaSNova & SaaSify. All rights reserved.</div>
-      <div class="footer-bottom-links">
-        <a href="https://saasnova.ai" target="_blank">saasnova.ai</a>
-        <a href="https://saasify.ai" target="_blank">saasify.ai</a>
-      </div>
+      &copy; 2026 SaaSNova &times; SaaSify. All rights reserved.
     </div>
   </div>
 </footer>
 
-<!-- ── STICKY CTA ── -->
-<div class="sticky-cta" id="stickyCta">
-  <span class="sticky-label">Co-sell ready in 4 weeks</span>
-  <a href="mailto:sales@saasify.ai?subject=AWS Partner Starter Bundle — Strategy Session Request" class="btn btn-primary">Book Session →</a>
-</div>
-
 <script>
-  // Sticky CTA visibility
-  const stickyCta = document.getElementById('stickyCta');
-  let lastScrollY = window.scrollY;
+// Dynamic Morphing Nav (Scroll Listener)
+const mainNav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    mainNav.classList.add('scrolled');
+  } else {
+    mainNav.classList.remove('scrolled');
+  }
+}, { passive: true });
 
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    if (scrollY > 600) {
-      stickyCta.classList.add('visible');
-    } else {
-      stickyCta.classList.remove('visible');
-    }
-    lastScrollY = scrollY;
-  }, { passive: true });
+// Dynamic Timeline Progression JS
+document.addEventListener('DOMContentLoaded', () => {
+  const timelineItems = document.querySelectorAll('.tl-item');
+  const progressBar = document.getElementById('tl-progress');
+  const timelineSection = document.getElementById('timeline');
 
-  // Fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  if(timelineItems.length > 0 && timelineSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Calculate progress height based on how many are active
+          const activeCount = document.querySelectorAll('.tl-item.active').length;
+          const percentage = ((activeCount - 1) / (timelineItems.length - 1)) * 100;
+          progressBar.style.height = `${percentage}%`;
+        }
+      });
+    }, { threshold: 0.6, rootMargin: '0px 0px -100px 0px' });
 
-  document.querySelectorAll('.module-card, .problem-item, .del-card, .ba-col, .engage-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
-
-  // Stagger items
-  document.querySelectorAll('.module-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.08}s`; });
-  document.querySelectorAll('.del-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.07}s`; });
-  document.querySelectorAll('.problem-item').forEach((el, i) => { el.style.transitionDelay = `${i * 0.06}s`; });
+    timelineItems.forEach(item => observer.observe(item));
+  }
+});
 </script>
+
 </body>
 </html>
