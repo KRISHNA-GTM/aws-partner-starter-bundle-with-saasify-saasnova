@@ -201,7 +201,7 @@ section { padding: 110px 6%; }
 .card-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; color: var(--text); }
 .card-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
 
-/* HIGH-IMPACT TIMELINE */
+/* HIGH-IMPACT TIMELINE (Calculated variables guarantee bulletproof alignment on all screens) */
 .dark-section { background: var(--dark-bg); color: var(--white); }
 .timeline-wrap { 
   --node-size: 54px;
@@ -212,6 +212,7 @@ section { padding: 110px 6%; }
 }
 .timeline-path {
   position: absolute; 
+  /* Mathematically guaranteed center regardless of browser scaling */
   left: calc(var(--tl-pad) + (var(--node-size) / 2) - (var(--line-w) / 2)); 
   top: 30px; bottom: 30px;
   width: var(--line-w); background: var(--dark-border); border-radius: 3px;
@@ -317,6 +318,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
 @media (max-width: 900px) {
   .grid-3, .synergy-grid, .del-grid, .icp-wrap, .footer-grid { grid-template-columns: 1fr; }
   .footer-grid { gap: 48px; }
+  /* Ensure timeline variables scale down mathematically on tablet */
   .timeline-wrap { --node-size: 40px; --tl-pad: 20px; }
   .tl-item { gap: 24px; }
   .tl-node { font-size: 1rem; }
@@ -332,15 +334,22 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
 @media (max-width: 640px) {
   section { padding: 100px 5% 70px; } 
   .nav { justify-content: center; padding: 0 5%; }
+  
+  /* Increased pill height and padding for larger mobile logos */
   .nav.scrolled { 
-    width: 92%; padding: 12px 16px; border-radius: 40px; 
-    min-height: 56px; justify-content: center; top: 16px;
+    width: 92%; padding: 14px 20px; border-radius: 40px; 
+    min-height: 64px; justify-content: center; top: 16px;
   }
+  
   .nav-logo-wrap { gap: 16px; justify-content: center; width: 100%; }
-  .nav-logo img { height: 26px !important; width: auto !important; }
-  .nav-logo.saasify-logo img { height: 20px !important; }
-  .nav.scrolled .nav-logo img { height: 24px !important; }
-  .nav.scrolled .nav-logo.saasify-logo img { height: 18px !important; }
+  
+  /* Fixed Mobile Logo Sizes - Much Larger Now */
+  .nav-logo img { height: 34px !important; width: auto !important; }
+  .nav-logo.saasify-logo img { height: 26px !important; width: auto !important; }
+  
+  .nav.scrolled .nav-logo img { height: 28px !important; width: auto !important; }
+  .nav.scrolled .nav-logo.saasify-logo img { height: 22px !important; width: auto !important; }
+  
   .nav-divider { display: none; }
   .nav-ctas { display: none !important; } 
   .hero-actions { flex-direction: column; width: 100%; }
@@ -348,7 +357,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
   .section-title { font-size: clamp(2rem, 8vw, 2.5rem); }
 }
 
-/* ULTRA-SMALL MOBILE */
+/* ULTRA-SMALL MOBILE (iPhone SE) */
 @media (max-width: 480px) {
   .hero { padding-top: 140px; } 
   .timeline-wrap { --node-size: 32px; --tl-pad: 12px; }
@@ -389,7 +398,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
       <span style="color: var(--blue);">SaaSNova</span> &times; <span style="color: var(--purple);">SaaSify</span>
     </h1>
     <p class="hero-sub">
-      You want AWS channel revenue. We build the operational foundation to capture it. We launch your Marketplace listing, wire your ACE CRM integration, and arm your sales team with field-validated narratives in parallel. Stop waiting months. Start closing in 4 weeks.
+      You want AWS channel revenue. We build the operational foundation to capture it. We launch your Marketplace listing, wire your CRM integration, and arm your sales team with field-validated narratives in parallel. Stop waiting months. Start closing in 4 weeks.
     </p>
     <div class="hero-actions">
       <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank" class="btn btn-pink btn-xl">Book a Strategy Session &rarr;</a>
@@ -398,23 +407,23 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
   </div>
 </section>
 
-<!-- THE CONSEQUENCE OF DELAY -->
+<!-- THE EXECUTION GAP (Merged Problem Section) -->
 <section class="light-bg border-y border-border">
   <div class="wrap center">
-    <div class="eyebrow">The Cost of Waiting</div>
-    <h2 class="section-title">Every month without infrastructure is lost revenue.</h2>
-    <p class="section-sub">AWS does not hand out pipeline to unprepared vendors. If you aren't operationally ready to co-sell, you get zero field priority.</p>
+    <div class="eyebrow" style="color:var(--orange); border-color:rgba(241,153,83,0.25); background:rgba(241,153,83,0.1);">The Execution Gap</div>
+    <h2 class="section-title">Guidance isn't GTM, You need operators.</h2>
+    <p class="section-sub">AWS does not hand out pipeline to unprepared vendors. Joining the partner network is free, but generating revenue requires architecture most ISVs lack.</p>
     
     <div class="grid-3 text-left">
       <div class="card">
-        <div class="card-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <h3 class="card-title">The 6-Month Black Hole</h3>
-        <p class="card-desc">ISVs relying on piecemeal vendor setups lose 2–3 quarters just trying to align CRM mapping with Partner Central compliance. Revenue stalls entirely.</p>
+        <div class="card-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3 class="card-title">Fragmented Deployment</h3>
+        <p class="card-desc">ISVs relying on piecemeal vendor setups lose 2-3 quarters trying to align CRM mapping with Partner Central compliance. We run workstreams in parallel to keep you moving.</p>
       </div>
       <div class="card">
         <div class="card-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <h3 class="card-title">Pipeline Throttling</h3>
-        <p class="card-desc">Without bi-directional ACE integration, your reps won't share data. When data isn't shared, AWS reps ignore you. The flywheel never spins.</p>
+        <p class="card-desc">Without bi-directional CRM integration, your reps won't share data. When data isn't shared, AWS reps ignore you. We wire your CRM directly into the AWS portal.</p>
       </div>
       <div class="card">
         <div class="card-icon purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
@@ -425,38 +434,11 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
   </div>
 </section>
 
-<!-- WHAT'S BREAKING YOUR PIPELINE -->
-<section>
-  <div class="wrap center">
-    <div class="eyebrow" style="color:var(--orange); border-color:rgba(241,153,83,0.25); background:rgba(241,153,83,0.1);">The Execution Gap</div>
-    <h2 class="section-title">What is currently breaking your AWS channel.</h2>
-    <p class="section-sub">Joining the partner network is free. Generating pipeline requires architecture most ISVs lack.</p>
-    
-    <div class="grid-3 text-left">
-      <div class="card">
-        <div class="card-icon purple"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-        <h3 class="card-title">Fragmented Deployment</h3>
-        <p class="card-desc">You pay one agency for messaging and another for API integration. The disjointed handoffs cost you tens of thousands in lost time.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon blue"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-        <h3 class="card-title">Invisible to the Field</h3>
-        <p class="card-desc">Your ICP isn't mapped to AWS strategic goals. To an AWS Account Manager, you look exactly like thousands of other unvetted ISVs.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon purple"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3 class="card-title">Compliance Roadblocks</h3>
-        <p class="card-desc">Improper hygiene on Partner Central instantly blocks eligibility, halting your progression toward ISV Accelerate or higher tiers.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- PROGRESSIVE OUTCOME TIMELINE -->
 <section class="dark-section dark-mode">
   <div class="wrap center">
     <div class="eyebrow" style="color:var(--pink); border-color:rgba(250,15,156,0.25); background:rgba(250,15,156,0.1);">The Transformation</div>
-    <h2 class="section-title">The 4-Week Escalation Protocol.</h2>
+    <h2 class="section-title">The 4-Week Escalation Protocol</h2>
     <p class="section-sub" style="margin-bottom: 80px;">We do not deliver advice. We deliver active, production-ready systems layered sequentially over 28 days to unlock immediate commercial readiness.</p>
 
     <div class="timeline-wrap text-left" id="timeline">
@@ -469,7 +451,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
         <div class="tl-content">
           <span class="tl-eyebrow">Week 1 Outcome</span>
           <h3 class="tl-title">Enterprise Visibility Established</h3>
-          <p class="tl-desc">Your core marketplace architecture goes live. Crucially, your CRM (Salesforce/HubSpot) is securely tethered to AWS data streams, establishing the foundation for automated deal routing.</p>
+          <p class="tl-desc">Your core marketplace architecture goes live. Crucially, your CRM is securely tethered to AWS data streams, establishing the foundation for automated deal routing.</p>
         </div>
       </div>
 
@@ -522,7 +504,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
       <div class="syn-content" style="border-top-color:var(--purple);">
         <img src="saasify-logo.png" alt="SaaSify" class="syn-logo" onerror="this.src='https://via.placeholder.com/150x30?text=SaaSify'">
         <h3 class="syn-title">The Technical Backbone</h3>
-        <p class="syn-desc">SaaSify hardcodes your operational compliance. While strategy is finalized, engineering deploys your Marketplace listing, sets up seamless Private Offer guardrails, and wires your CRM directly into the AWS ACE portal so data flows without human friction.</p>
+        <p class="syn-desc">SaaSify hardcodes your operational compliance. While strategy is finalized, engineering deploys your Marketplace listing, sets up seamless Private Offer guardrails, and wires your CRM directly into the AWS portal so data flows without human friction.</p>
       </div>
     </div>
   </div>
@@ -532,7 +514,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
 <section>
   <div class="wrap center">
     <div class="eyebrow">Business Impact</div>
-    <h2 class="section-title">Deliverables that dictate revenue.</h2>
+    <h2 class="section-title">Deliverables that dictate revenue</h2>
     <p class="section-sub">We don't hand over slideware, We deploy operational assets that unlock specific commercial capabilities.</p>
     
     <div class="del-grid text-left">
@@ -545,7 +527,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
       </div>
       <div class="del-card purple">
         <h3 class="del-title">Co-Sell Data Automation</h3>
-        <p class="del-desc">A hardened, bi-directional API connection between your CRM and the AWS ACE Portal.</p>
+        <p class="del-desc">A hardened, bi-directional API connection between your CRM and AWS.</p>
         <div class="del-impact" style="border-left-color:var(--purple);">
           <span style="color:var(--purple); font-weight:700;">&rarr; Unlocks:</span> Guarantees every qualified lead is immediately visible to AWS reps, ensuring you get quota-credit leverage.
         </div>
@@ -645,6 +627,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
         <h4 class="footer-links-title">Quick Links</h4>
         <a href="https://www.saasnova.ai" target="_blank">SaaSNova</a>
         <a href="https://saasify.ai" target="_blank">SaaSify</a>
+        <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank">Book a Session</a>
       </div>
     </div>
     
