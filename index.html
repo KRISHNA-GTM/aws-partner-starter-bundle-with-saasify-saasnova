@@ -17,8 +17,8 @@
 </script>
 
 <!-- Exact Favicons Requested -->
-<link rel="icon" type="image/png" sizes="32x32" href="logo-favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="logo-favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/aws-partner-starter-bundle-with-saasify-saasnova/logo-favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/aws-partner-starter-bundle-with-saasify-saasnova/logo-favicon-16x16.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,6 +189,10 @@ section { padding: 110px 6%; }
 }
 .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); border-color: var(--blue); }
 
+a.card { text-decoration: none; display: block; color: inherit; }
+a.card .card-title { transition: color 0.2s; }
+a.card:hover .card-title { color: var(--blue); }
+
 .card-icon {
   width: 56px; height: 56px; border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
@@ -201,7 +205,7 @@ section { padding: 110px 6%; }
 .card-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; color: var(--text); }
 .card-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
 
-/* HIGH-IMPACT TIMELINE (Calculated variables guarantee bulletproof alignment on all screens) */
+/* HIGH-IMPACT TIMELINE */
 .dark-section { background: var(--dark-bg); color: var(--white); }
 .timeline-wrap { 
   --node-size: 54px;
@@ -212,7 +216,6 @@ section { padding: 110px 6%; }
 }
 .timeline-path {
   position: absolute; 
-  /* Mathematically guaranteed center regardless of browser scaling */
   left: calc(var(--tl-pad) + (var(--node-size) / 2) - (var(--line-w) / 2)); 
   top: 30px; bottom: 30px;
   width: var(--line-w); background: var(--dark-border); border-radius: 3px;
@@ -314,11 +317,10 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
 .footer-legal-links a:hover { color: var(--blue); }
 .footer-copy { color: var(--muted); font-size: 0.85rem; }
 
-/* RESPONSIVE (Tablets) */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .grid-3, .synergy-grid, .del-grid, .icp-wrap, .footer-grid { grid-template-columns: 1fr; }
   .footer-grid { gap: 48px; }
-  /* Ensure timeline variables scale down mathematically on tablet */
   .timeline-wrap { --node-size: 40px; --tl-pad: 20px; }
   .tl-item { gap: 24px; }
   .tl-node { font-size: 1rem; }
@@ -330,26 +332,18 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
   .hero { padding: 160px 5% 80px; }
 }
 
-/* RESPONSIVE (Mobile Phones) */
 @media (max-width: 640px) {
   section { padding: 100px 5% 70px; } 
   .nav { justify-content: center; padding: 0 5%; }
-  
-  /* Increased pill height and padding for larger mobile logos */
   .nav.scrolled { 
     width: 92%; padding: 14px 20px; border-radius: 40px; 
     min-height: 64px; justify-content: center; top: 16px;
   }
-  
   .nav-logo-wrap { gap: 16px; justify-content: center; width: 100%; }
-  
-  /* Fixed Mobile Logo Sizes - Much Larger Now */
   .nav-logo img { height: 34px !important; width: auto !important; }
   .nav-logo.saasify-logo img { height: 26px !important; width: auto !important; }
-  
   .nav.scrolled .nav-logo img { height: 28px !important; width: auto !important; }
   .nav.scrolled .nav-logo.saasify-logo img { height: 22px !important; width: auto !important; }
-  
   .nav-divider { display: none; }
   .nav-ctas { display: none !important; } 
   .hero-actions { flex-direction: column; width: 100%; }
@@ -357,7 +351,6 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
   .section-title { font-size: clamp(2rem, 8vw, 2.5rem); }
 }
 
-/* ULTRA-SMALL MOBILE (iPhone SE) */
 @media (max-width: 480px) {
   .hero { padding-top: 140px; } 
   .timeline-wrap { --node-size: 32px; --tl-pad: 12px; }
@@ -376,16 +369,16 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
 <nav class="nav" id="mainNav">
   <div class="nav-logo-wrap">
     <a href="https://saasnova.ai" class="nav-logo saasnova-logo">
-      <img src="saasnova-logo.png" alt="SaaSNova" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSNova'">
+      <img src="/aws-partner-starter-bundle-with-saasify-saasnova/saasnova-logo.png" alt="SaaSNova" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSNova'">
     </a>
     <div class="nav-divider"></div>
     <a href="https://saasify.ai" class="nav-logo saasify-logo">
-      <img src="saasify-logo.png" alt="SaaSify" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSify'">
+      <img src="/aws-partner-starter-bundle-with-saasify-saasnova/saasify-logo.png" alt="SaaSify" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSify'">
     </a>
   </div>
   <div class="nav-ctas">
     <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank" class="btn btn-pink">Book a Strategy Session &rarr;</a>
-    <a href="https://www.saasnova.ai/aws-partner-starter-bundle-with-saasify-saasnova/AWS_Partner_Starter_Bundle.pdf" target="_blank" class="btn btn-orange">View Bundle Overview</a>
+    <a href="mailto:marketing@saasnova.ai?subject=AWS%20Partner%20Starter%20Bundle%20Overview%20Request&body=Hi%2C%20I%20would%20like%20to%20request%20the%20bundle%20overview." class="btn btn-orange">Request Bundle Overview</a>
   </div>
 </nav>
 
@@ -402,12 +395,12 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
     </p>
     <div class="hero-actions">
       <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank" class="btn btn-pink btn-xl">Book a Strategy Session &rarr;</a>
-      <a href="https://www.saasnova.ai/aws-partner-starter-bundle-with-saasify-saasnova/AWS_Partner_Starter_Bundle.pdf" target="_blank" class="btn btn-orange btn-xl">View Bundle Overview</a>
+      <a href="mailto:marketing@saasnova.ai?subject=AWS%20Partner%20Starter%20Bundle%20Overview%20Request&body=Hi%2C%20I%20would%20like%20to%20request%20the%20bundle%20overview." class="btn btn-orange btn-xl">Request Bundle Overview</a>
     </div>
   </div>
 </section>
 
-<!-- THE EXECUTION GAP (Merged Problem Section) -->
+<!-- THE EXECUTION GAP -->
 <section class="light-bg border-y border-border">
   <div class="wrap center">
     <div class="eyebrow" style="color:var(--orange); border-color:rgba(241,153,83,0.25); background:rgba(241,153,83,0.1);">The Execution Gap</div>
@@ -478,9 +471,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
         <div class="tl-content">
           <span class="tl-eyebrow">Week 4 Outcome</span>
           <h3 class="tl-title">Sustained Deal Flow Initiated</h3>
-          <p class="tl-desc">Your Marketplace, co-sell motion, and CRM workflows are fully operational. Pipeline generation is active and repeatable. Your AWS GTM motion is live and ready to scale.
-
-</p>
+          <p class="tl-desc">Your Marketplace, co-sell motion, and CRM workflows are fully operational. Pipeline generation is active and repeatable. Your AWS GTM motion is live and ready to scale.</p>
         </div>
       </div>
     </div>
@@ -498,13 +489,13 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
 
     <div class="synergy-grid text-left">
       <div class="syn-content">
-        <img src="saasnova-logo.png" alt="SaaSNova" class="syn-logo" onerror="this.src='https://via.placeholder.com/150x30?text=SaaSNova'">
+        <img src="/aws-partner-starter-bundle-with-saasify-saasnova/saasnova-logo.png" alt="SaaSNova" class="syn-logo" onerror="this.src='https://via.placeholder.com/150x30?text=SaaSNova'">
         <h3 class="syn-title">The Strategic Tip of the Spear</h3>
         <p class="syn-desc">SaaSNova decodes exactly what AWS field reps are compensated on. We take your software, define the precise ICP, and map your value prop directly to AWS strategic priorities. You stop guessing what the field wants and give them exactly what they need to hit quota.</p>
       </div>
       
       <div class="syn-content" style="border-top-color:var(--purple);">
-        <img src="saasify-logo.png" alt="SaaSify" class="syn-logo" onerror="this.src='https://via.placeholder.com/150x30?text=SaaSify'">
+        <img src="/aws-partner-starter-bundle-with-saasify-saasnova/saasify-logo.png" alt="SaaSify" class="syn-logo" onerror="this.src='https://via.placeholder.com/150x30?text=SaaSify'">
         <h3 class="syn-title">The Technical Backbone</h3>
         <p class="syn-desc">SaaSify hardcodes your operational compliance. While strategy is finalized, engineering deploys your Marketplace listing, sets up seamless Private Offer guardrails, and wires your CRM directly into the AWS portal so data flows without human friction.</p>
       </div>
@@ -552,8 +543,31 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
   </div>
 </section>
 
+<!-- INDUSTRY NEWS / PRESS -->
+<section class="light-bg border-y border-border" style="border-top: 1px solid var(--border);">
+  <div class="wrap center">
+    <div class="eyebrow" style="color:var(--purple); border-color:rgba(129,70,255,0.25); background:rgba(129,70,255,0.1);">Industry News</div>
+    <h2 class="section-title">Making Waves in the Cloud Ecosystem</h2>
+    <p class="section-sub">Our partnership is setting a new standard for how ISVs accelerate their AWS go-to-market motion. Read the official announcement to learn why the market is paying attention.</p>
+    
+    <div style="max-width: 860px; margin: 0 auto; text-align: left;">
+      <a href="https://www.desmoinesregister.com/press-release/story/66703/saasify-and-saasnova-launch-the-aws-partner-starter-bundle-to-help-isvs-go-marketplace-co-sell-ready-in-weeks/" target="_blank" class="card">
+        <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 20px;">
+          <span style="background: var(--blue); color: var(--white); font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;">Press Release</span>
+          <span style="font-size: 0.9rem; color: var(--muted); font-weight: 500;">Recently Announced</span>
+        </div>
+        <h3 class="card-title" style="font-size: 1.5rem; line-height: 1.4;">SaaSify and SaaSNova Launch the AWS Partner Starter Bundle to Help ISVs Go Marketplace and Co-Sell Ready in Weeks</h3>
+        <p class="card-desc" style="font-size: 1.05rem; margin-bottom: 24px;">The market has recognized the critical need for speed in cloud go-to-market execution. Our joint press release details how SaaSNova and SaaSify are fundamentally changing how independent software vendors scale channel revenue. Discover how we bypass traditional deployment bottlenecks and empower sales teams to close deals faster.</p>
+        <div style="color: var(--blue); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+          Read the full announcement <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- WHO THIS IS FOR -->
-<section class="dark-section dark-mode border-y border-dark-border">
+<section class="dark-section dark-mode border-y border-dark-border" style="border-top: 1px solid var(--dark-border);">
   <div class="wrap center">
     <div class="eyebrow">Who this is for</div>
     <h2 class="section-title">Built for ISVs ready to move.</h2>
@@ -591,7 +605,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
     <p class="section-sub">Every quarter you delay AWS execution is enterprise pipeline ceded to your competitors. Let's deploy the infrastructure today.</p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; align-items:center;">
       <a href="https://calendly.com/jen-saasnova/founder-strategy-session-scale-your-gtm-via-aws" target="_blank" class="btn" style="background:var(--white); color:var(--text); padding:16px 36px; font-size:1.05rem;">Book a Strategy Session &rarr;</a>
-      <a href="https://www.saasnova.ai/aws-partner-starter-bundle-with-saasify-saasnova/AWS_Partner_Starter_Bundle.pdf" target="_blank" class="btn" style="background:transparent; border:2px solid var(--white); color:var(--white); padding:16px 36px; font-size:1.05rem;">View Bundle Overview</a>
+      <a href="mailto:marketing@saasnova.ai?subject=AWS%20Partner%20Starter%20Bundle%20Overview%20Request&body=Hi%2C%20I%20would%20like%20to%20request%20the%20bundle%20overview." class="btn" style="background:transparent; border:2px solid var(--white); color:var(--white); padding:16px 36px; font-size:1.05rem;">Request Bundle Overview</a>
     </div>
   </div>
 </section>
@@ -603,7 +617,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
       <!-- SaaSNova Col -->
       <div>
         <a href="https://www.saasnova.ai" target="_blank" class="footer-logo">
-          <img src="saasnova-logo.png" alt="SaaSNova" height="40" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSNova'">
+          <img src="/aws-partner-starter-bundle-with-saasify-saasnova/saasnova-logo.png" alt="SaaSNova" height="40" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSNova'">
         </a>
         <p class="footer-desc" style="margin-top: 16px;">Strategic GTM leadership and pipeline acceleration for cloud-native ISVs</p>
         <div style="margin-top: 24px; display: flex; align-items: center; gap: 10px;">
@@ -615,7 +629,7 @@ footer { background: var(--white); padding: 80px 6% 40px; border-top: 1px solid 
       <!-- SaaSify Col -->
       <div>
         <a href="https://saasify.ai" target="_blank" class="footer-logo">
-          <img src="saasify-logo.png" alt="SaaSify" height="40" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSify'">
+          <img src="/aws-partner-starter-bundle-with-saasify-saasnova/saasify-logo.png" alt="SaaSify" height="40" onerror="this.src='https://via.placeholder.com/150x40?text=SaaSify'">
         </a>
         <p class="footer-desc" style="margin-top: 16px;">CRM integration and co-sell automation for multi-cloud marketplaces</p>
         <div style="margin-top: 24px; display: flex; align-items: center; gap: 10px;">
